@@ -3,6 +3,8 @@ import { Readex_Pro } from 'next/font/google'
 import './globals.css'
 import { NextUIProvider } from '@nextui-org/react'
 import { Providers } from './providers'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 const Readex = Readex_Pro({ 
   subsets: ['arabic'],
@@ -23,7 +25,9 @@ export default function RootLayout({
     <html lang="ar" className='light'>
         <body className={Readex.className}>
           <Providers>
+            <Header/>
             {children}
+            <Footer/>
           </Providers>
         </body>
     </html>

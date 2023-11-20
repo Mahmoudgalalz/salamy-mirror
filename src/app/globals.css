@@ -28,3 +28,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+a:hover, li:hover {
+  color: #FCD961;
+  transition: 0.2s color ease-in-out;
+  
+}

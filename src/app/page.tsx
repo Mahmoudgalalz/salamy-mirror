@@ -1,11 +1,9 @@
-import { Button } from "@nextui-org/react";
-
+import { Button, Image } from "@nextui-org/react";
+import NextImage from 'next/image'
 export default function Home() {
   return (
     <main className=" relative flex justify-between items-center my-16 bg-[#FFE0D0]">
-      <div className="sm:w-[90rem] lg:w-[120rem] xl:w-[120rem]">
-          <img src="main-page.png" className=" w-full" alt="" />
-      </div>
+        <Image as={NextImage} src="/main-page.png" width={1400} radius="none" height={1900} alt="Main Image" />
         <section className="flex mx-[16rem] mr-20 flex-col text-[#333D42] gap-12 py-20 justify-center">
             <h3 className="text-xl">منصة سلامي للصحة النفسية</h3>
             <h1 className="text-4xl leading-relaxed w-[32rem] font-semibold">منصة سلامي دليلك المتكامل نحو صحة نفسية أفضل</h1>

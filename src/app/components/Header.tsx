@@ -66,10 +66,10 @@ const dropdown = [
 export default function Header() {
     return (
       <main className="w-full bg-[#F6F6F6] p-6">
-        <div className="flex gap-2 justify-end ml-10 items-center"> 
-        <div className="flex gap-10 text-[#656667]">
+        <div className="flex gap-10 justify-end ml-10 items-center"> 
+        <div className="flex gap-12 text-[#656667]">
           {upperData.map(({href,name})=>{
-            return <a className=" font-extralight text-sm" href={href}>{name}</a>
+            return <a className=" font-extralight text-xl" href={href}>{name}</a>
           })
         }
         </div>
@@ -81,15 +81,15 @@ export default function Header() {
           }
           </div>
         </div>
-        <div className="mt-6 flex items-end gap-10 justify-between">
-          <img className="w-[10rem]" src="logo-black.png"/>
+        <div className="mt-6 flex items-center gap-10 justify-between">
+          <img className="w-[18rem]" src="logo-black.png"/>
           <div className="flex w-full ml-28 relative">
             <Button radius="sm" className=" w-36 absolute left-0 p-7 z-10 bg-[#FCD961] text-[#656667]" color="warning" size="lg">البحث</Button>
             <Input
             classNames={{
               label: "text-black/50 dark:text-white/90",
               input: [
-                
+                "text-xl",
                 "bg-transparent",
                 "text-black/90 dark:text-white/90",
                 "placeholder:text-default-700/50 dark:placeholder:text-white/60",
@@ -106,10 +106,10 @@ export default function Header() {
             placeholder="كلمات البحث"/>
           </div>
         </div>
-        <div className="flex gap-10 justify-start mt-6 mx-52">
+        <div className="flex gap-10 justify-start mt-6 mx-[21rem]">
             {
               dropdown.map(({name,href})=>{
-                return <a href={href} className="text-lg font-light text-[#656667] ">{name}</a>
+                return <a href={href} className="text-xl font-medium text-[#656667] ">{name}</a>
               })
             }
         </div>

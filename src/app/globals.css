@@ -4,22 +4,23 @@
 
 :root {
   --foreground-rgb: 51, 61, 66;
-  --background-start-rgb: 255, 255,255;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 248, 247, 255;
+  --background-end-rgb: 248, 247, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 51, 61, 66;
-    --background-start-rgb: 255, 255, 255;
-    --background-end-rgb: 255, 255, 255;
+    --background-start-rgb: 248, 247, 255;
+    --background-end-rgb: 248, 247, 255;
   }
 }
 html{
   direction: rtl;
+  scroll-behavior: smooth;
 }
 body {
-  
+
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

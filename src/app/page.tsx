@@ -55,8 +55,24 @@ export default function Home() {
         <h1 className="text-5xl font-bold text-white text-center w-[56rem] leading-relaxed">اشترك في نشرتنا البريدية</h1>
         <p className="text-3xl font-light text-white">انضم إلى قائمتنا البريدية وكن على إطلاع على احدث المقالات وأهم النصائح اليومية في الصحة النفسية.</p>
         <div className="relative w-[44rem] my-10" id="newsletter" >
-          <Input className="" size="lg" radius="md" placeholder="البريد الالكتروني"/>
-          <Button className=" absolute top-0 left-0 p-8 bg-[#fcd961] text-[#656667]" radius="sm">اشترك</Button>
+          <Input classNames={{
+              label: "text-black/50 dark:text-white/90",
+              input: [
+                "text-2xl",
+                "bg-transparent",
+                "text-black/90 dark:text-white/90",
+                "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+              ],
+              innerWrapper: 
+              [
+                "bg-transparent",
+              ],
+              inputWrapper: [
+                "bg-[#FFEEDD] p-10",
+                "!cursor-text",
+              ],
+            }} size="lg" radius="md" placeholder="البريد الالكتروني"/>
+          <Button className=" absolute top-0 left-0 p-10 w-44 bg-[#fcd961] text-[#656667]" radius="sm">اشترك</Button>
         </div>
         {/* TODO list fetched from the API */}
       </div>

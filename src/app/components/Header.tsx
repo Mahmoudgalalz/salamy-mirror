@@ -69,7 +69,7 @@ export default function Header() {
         <div className="flex gap-10 justify-end ml-10 items-center"> 
         <div className="flex gap-12 text-[#656667]">
           {upperData.map(({href,name})=>{
-            return <a className=" font-extralight text-xl" href={href}>{name}</a>
+            return <a className=" font-extralight text-2xl" href={href}>{name}</a>
           })
         }
         </div>
@@ -81,15 +81,15 @@ export default function Header() {
           }
           </div>
         </div>
-        <div className="mt-6 flex items-center gap-10 justify-between">
+        <div className="mt-6 mx-20 flex items-center gap-10 justify-between">
           <img className="w-[18rem]" src="logo-black.png"/>
           <div className="flex w-full ml-28 relative">
-            <Button radius="sm" className=" w-36 absolute left-0 p-7 z-10 bg-[#FCD961] text-[#656667]" color="warning" size="lg">البحث</Button>
+            <Button radius="sm" className=" w-56 absolute left-0 text-2xl p-10 z-10 bg-[#FCD961] text-[#656667]" color="warning" size="lg">البحث</Button>
             <Input
             classNames={{
               label: "text-black/50 dark:text-white/90",
               input: [
-                "text-xl",
+                "text-2xl",
                 "bg-transparent",
                 "text-black/90 dark:text-white/90",
                 "placeholder:text-default-700/50 dark:placeholder:text-white/60",
@@ -99,17 +99,17 @@ export default function Header() {
                 "bg-transparent",
               ],
               inputWrapper: [
-                "bg-[#FFEEDD]",
+                "bg-[#FFEEDD] p-10",
                 "!cursor-text",
               ],
             }}
             placeholder="كلمات البحث"/>
           </div>
         </div>
-        <div className="flex gap-10 justify-start mt-6 mx-[21rem]">
+        <div className="flex gap-20 justify-start mt-6 mx-[26rem]">
             {
               dropdown.map(({name,href})=>{
-                return <a href={href} className="text-xl font-medium text-[#656667] ">{name}</a>
+                return <a href={href} className="text-[28px] font-medium text-[#656667] ">{name}</a>
               })
             }
         </div>

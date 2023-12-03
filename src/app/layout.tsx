@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Readex_Pro } from 'next/font/google'
 import './globals.css'
-import { NextUIProvider } from '@nextui-org/react'
 import { Providers } from './providers'
 import Header from './components/Header'
 import Footer from './components/Footer'

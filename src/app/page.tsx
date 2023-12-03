@@ -1,5 +1,7 @@
+'use client'
 import { Button, Image, Input } from "@nextui-org/react";
 import NextImage from 'next/image'
+import ArticleShowCase from "./components/Article/article-showcase";
 
 const cardInfo = [
   {
@@ -18,7 +20,7 @@ const cardInfo = [
     bio:'نحن هنا لنساعدك للوصول إلى السلام النفسي وإلى أفضل نسخة من نفسك من خلال استراتيجيات علاجية متكاملة مبنية على أسس علمية'
   },
 ]
-
+console.log(process.env.API_KEY)
 export default function Home() {
   return (
     <>
@@ -50,6 +52,7 @@ export default function Home() {
         <h1 className="text-5xl font-bold text-[##333D42] text-center w-[56rem] leading-relaxed">نساعدك في علاج مشكلتك النفسية والوصول إلى السلام النفسي</h1>
         <p className="text-3xl font-light">اختر موضوعاً ترغب في استكشافه</p>
         {/* TODO list fetched from the API */}
+        <ArticleShowCase/>
       </div>
       <div className="flex flex-col items-center gap-10 py-36 bg-[#F05B5B] justify-center">
         <h1 className="text-5xl font-bold text-white text-center w-[56rem] leading-relaxed">اشترك في نشرتنا البريدية</h1>

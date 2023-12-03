@@ -1,3 +1,4 @@
+'use client'
 import { Button, Divider, Input } from "@nextui-org/react";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
@@ -76,24 +77,24 @@ export default function Footer(): JSX.Element{
         <div className="flex justify-around">
         <div className="flex flex-col gap-10">
             <img className="w-[20rem]" src="logo-white.png" alt="Salamy's Logo white" />
-            <div className="text-white flex flex-col gap-3">
-                <h3 className="font-normal text-3xl">منصة سلامي النفسية</h3>
+            <div className="flex flex-col text-default gap-3">
+                <h3 className="text-default font-normal text-3xl">منصة سلامي النفسية</h3>
                 <p className=" leading-0 text-2xl flex-wrap font-light break-words w-[40rem]">
                 احصل على الدعم النفسي الذي تحتاجه الآن علي منصة سلامي للصحة النفسية، واعرف اكثر عن كيفية تنظيم حياتك وعلاقات مع الاشخاص المحيطة بشكل علمي
                 </p>
-                <Button className="bg-[#FCD961] py-5 text-2xl px-2" radius="sm">اعرف اكتر</Button>
+                <Button className="bg-primary text-content1 py-5 text-2xl px-2" radius="sm">اعرف اكتر</Button>
             </div>
         </div>
-        <div className="flex flex-col 2xl:justify-start items-center gap-10">
+        <div className="flex text-default flex-col 2xl:justify-start items-center gap-10">
             {RightElementFooter()}
         </div>
     </div>
 
         <Divider className="bg-white my-16"/>
         <section className="flex justify-between">
-            <h1 className="text-white font-semibold">جميع الحقوق محفوظة لمنصة سلامي ٢٠٢٣</h1>
-            <div className="flex items-center gap-6">
-                <h1 className="text-[#fcd961] font-medium"> احدي مشروعات</h1>
+            <h1 className="font-semibold">جميع الحقوق محفوظة لمنصة سلامي ٢٠٢٣</h1>
+            <div className="flex items-center  gap-6">
+                <h1 className="text-primary font-medium"> احدي مشروعات</h1>
                 <a href="https://dbrandria.com/">
                     {BrandriaBrand}
                 </a>
@@ -107,23 +108,23 @@ function RightElementFooter(): JSX.Element{
     return(
         <>
         <div className="flex gap-10 ">
-            <h1 className="text-white text-4xl font-light flex flex-col">
+            <h1 className="text-default text-4xl font-light flex flex-col">
                 <span className="text-[4rem] mb-6">اشترك</span>
                  في الخدمة البريدية
             </h1>
 
-            <div className="flex flex-col gap-4">
-                <h1 className="text-white font-light text-xl">اشترك في الخدمة البريدية ليصلك جديد موقع سلامي</h1>
-                <div className=" relative">
-                    <Input size="sm" radius="md" placeholder="البريد الالكتروني"/>
-                    <Button className=" absolute top-0 left-0 p-6 bg-[#fcd961] text-[#656667]" radius="sm">اشترك</Button>
+            <div className="flex text-default flex-col gap-4">
+                <h1 className=" font-light text-xl">اشترك في الخدمة البريدية ليصلك جديد موقع سلامي</h1>
+                <div className="relative">
+                    <Input className="bg-foreground rounded-lg text-content1-foreground" size="sm" radius="md" placeholder="البريد الالكتروني"/>
+                    <Button className=" text-sm absolute top-0 left-0 p-6 bg-primary text-content1" radius="sm">اشترك</Button>
                 </div>
             </div>
         </div>
         <div className="mt-10 px-4 flex gap-10">
             <div>
-                <h1 className="text-white text-2xl">عن منصة سلامي</h1>
-                <ul className="text-white text-lg flex gap-10 font-light my-6">
+                <h1 className="text-2xl">عن منصة سلامي</h1>
+                <ul className="text-lg flex gap-10 font-light my-6">
                     <li>
                         <a href="/">قصتنا</a>
                     </li>
@@ -131,8 +132,8 @@ function RightElementFooter(): JSX.Element{
                         <a href="/">مهمتنا</a>
                     </li>
                 </ul>
-                <h1 className="text-white text-2xl">كيف يعمل سلامي</h1>
-                <ul className="text-white text-lg flex gap-10 font-light my-6">
+                <h1 className="text-2xl">كيف يعمل سلامي</h1>
+                <ul className="text-lg flex gap-10 font-light my-6">
                     <li>
                         <a href="/">انتاج المحتوي</a>
                     </li>
@@ -142,8 +143,8 @@ function RightElementFooter(): JSX.Element{
                 </ul>
             </div>
             <div>
-                <h1 className="text-white text-2xl">طلب المساعدة</h1>
-                <ul className="text-white text-lg flex flex-col gap-[26px] font-light my-6">
+                <h1 className="text-2xl">طلب المساعدة</h1>
+                <ul className="text-lg flex flex-col gap-[26px] font-light my-6">
                     <li>
                         <a href="/">مؤسسات ومنظمات</a>
                     </li>
@@ -156,8 +157,8 @@ function RightElementFooter(): JSX.Element{
                 </ul>
             </div>
             <div>
-            <h1 className="text-white text-2xl">تواصل معنا</h1>
-                <ul className="text-white text-lg flex flex-col gap-[26px] font-light my-6">
+            <h1 className="text-2xl">تواصل معنا</h1>
+                <ul className="text-lg flex flex-col gap-[26px] font-light my-6">
                     <li>
                         <a href="tel:+010000054376">+٠١٠٠٠٠٥٤٣٧٦</a>
                     </li>

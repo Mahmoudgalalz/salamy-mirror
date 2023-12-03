@@ -1,3 +1,4 @@
+'use client'
 import { Facebook, Instagram, Twitter } from "lucide-react"
 import {Button, Input} from "@nextui-org/react";
 
@@ -65,9 +66,9 @@ const dropdown = [
 
 export default function Header() {
     return (
-      <main className="w-full bg-[#F6F6F6] p-6">
+      <main className="w-full bg-background p-6">
         <div className="flex gap-10 justify-end ml-10 items-center"> 
-        <div className="flex gap-12 text-[#656667]">
+        <div className="flex gap-12 text-content1-foreground">
           {upperData.map(({href,name})=>{
             return <a className=" font-extralight text-2xl" href={href}>{name}</a>
           })
@@ -84,7 +85,7 @@ export default function Header() {
         <div className="mt-6 mx-20 flex items-center gap-10 justify-between">
           <img className="w-[18rem]" src="logo-black.png"/>
           <div className="flex w-full ml-28 relative">
-            <Button radius="sm" className=" w-56 absolute left-0 text-2xl p-10 z-10 bg-[#FCD961] text-[#656667]" color="warning" size="lg">البحث</Button>
+            <Button radius="sm" className=" w-56 absolute left-0 text-2xl p-10 z-10 bg-primary text-content1" color="warning" size="lg">البحث</Button>
             <Input
             classNames={{
               label: "text-black/50 dark:text-white/90",
@@ -99,7 +100,7 @@ export default function Header() {
                 "bg-transparent",
               ],
               inputWrapper: [
-                "bg-[#FFEEDD] p-10",
+                "bg-foreground p-10",
                 "!cursor-text",
               ],
             }}
@@ -109,7 +110,7 @@ export default function Header() {
         <div className="flex gap-20 justify-start mt-6 mx-[26rem]">
             {
               dropdown.map(({name,href})=>{
-                return <a href={href} className="text-[28px] font-medium text-[#656667] ">{name}</a>
+                return <a href={href} className="text-[28px] font-medium text-content1 ">{name}</a>
               })
             }
         </div>

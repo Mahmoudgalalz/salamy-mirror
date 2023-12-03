@@ -35,3 +35,29 @@ a:hover, li:hover {
   transition: 0.2s color ease-in-out;
   
 }
+
+
+@layer base {
+  :root {
+    --nextui-background: 248 100% 98%; /* Setted */
+    --nextui-foreground: 30 100% 93%; /* Setted */
+    --nextui-card: 0 0% 100%;
+    --nextui-card-foreground: 224 71.4% 4.1%;
+    --nextui-popover: 0 0% 100%;
+    --nextui-popover-foreground: 224 71.4% 4.1%;
+    --nextui-primary: 200 13% 23%; /* Setted */
+    --nextui-primary-foreground: 210 1% 40%; /* Setted */
+    --nextui-secondary: 46 96% 68%; /* Setted */
+    --nextui-secondary-foreground: 30 100% 93%; /* Setted */
+    --nextui-muted: 220 14.3% 95.9%;
+    --nextui-muted-foreground: 220 8.9% 46.1%;
+    --nextui-accent: 0 83% 65%; /* Setted */
+    --nextui-accent-foreground: 170 91% 17%; /* Setted */
+    --nextui-destructive: 0 84.2% 60.2%;
+    --nextui-destructive-foreground: 210 20% 98%;
+    --nextui-border: 170 91% 17%;
+    --nextui-input: 220 13% 91%;
+    --nextui-ring: 262.1 83.3% 57.8%;
+    --nextui-radius: rem;
+  }
+}

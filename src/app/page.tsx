@@ -20,7 +20,7 @@ const cardInfo = [
     bio:'نحن هنا لنساعدك للوصول إلى السلام النفسي وإلى أفضل نسخة من نفسك من خلال استراتيجيات علاجية متكاملة مبنية على أسس علمية'
   },
 ]
-console.log(process.env.API_KEY)
+
 export default function Home() {
   return (
     <>

@@ -67,7 +67,7 @@ export default function Home() {
           نساعدك في علاج مشكلتك النفسية والوصول إلى السلام النفسي
         </h1>
         <p className="text-3xl font-light">اختر موضوعاً ترغب في استكشافه</p>
-        {/* TODO list fetched from the API */}
+
         <ArticleShowCase />
       </div>
       <div className="flex flex-col items-center gap-10 py-36 bg-[#F05B5B] justify-center">
@@ -118,9 +118,9 @@ function Card({
   bio: string;
 }) {
   return (
-    <div className="flex flex-col gap-6 justify-center items-center mx-20 w-[32rem]">
-      <Image width={400} radius="lg" height={400} src={image} />
-      <h1 className="font-medium text-3xl w-[28rem] text-center">{header}</h1>
+    <div className="flex flex-col gap-6 justify-center items-center md:mx-5 md:w-[10rem] 2xl:mx-20 2xl:w-[32rem]">
+      <Image width={400} radius="lg" height={400} src={image} alt="Card" />
+      <h1 className="font-medium text-3xl w-full text-center">{header}</h1>
       <p className="text-center text-3xl font-light">{bio}</p>
     </div>
   );

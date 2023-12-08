@@ -2,6 +2,7 @@
 import { Button, Image, Input } from "@nextui-org/react";
 import NextImage from "next/image";
 import ArticleShowCase from "../components/Article/article-showcase";
+import { FeaturedArticles } from "./components/FeaturedArticles";
 
 const cardInfo = [
   {
@@ -67,9 +68,9 @@ export default function Home() {
           نساعدك في علاج مشكلتك النفسية والوصول إلى السلام النفسي
         </h1>
         <p className="text-3xl font-light">اختر موضوعاً ترغب في استكشافه</p>
-
         <ArticleShowCase />
       </div>
+      <FeaturedArticles />
       <div className="flex flex-col items-center gap-10 py-36 bg-[#F05B5B] justify-center">
         <h1 className="text-5xl font-bold text-white text-center w-[56rem] leading-relaxed">
           اشترك في نشرتنا البريدية

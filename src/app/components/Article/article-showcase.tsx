@@ -1,14 +1,15 @@
-import { ArticleGroups, showCase } from "@/app/lib/api/article-group";
 import { useEffect, useState } from "react";
 import ArrowLink from "../arrow-link";
+import { fetchMainCategories } from "@/app/lib/api/main-category";
+import { suggestArticleGroups } from "@/app/lib/utils";
 
 export default function ArticleShowCase() {
-  let [data, setData] = useState<ArticleGroups>();
+  let [data, setData] = useState<ArticleGroupsData[]>();
 
   useEffect(() => {
     async function getData() {
       try {
-        const res = await showCase();
+        const res = await fetchMainCategories();
         if (res) return res;
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -17,25 +18,31 @@ export default function ArticleShowCase() {
 
     getData().then((res) => {
       if (res) {
-        res.data = res.data.sort(() => 0.5 - Math.random());
-        res.data = res.data.slice(0, 10);
-        setData(res);
+        setData(suggestArticleGroups(res));
       }
     });
   }, []);
 
   return (
-    <div className="flex flex-wrap mx-5 justify-center gap-8 pt-10">
-      <div className="flex gap-8">
-        {data?.data.slice(0, 6).map((card) => (
-          <ArrowLink key={card.id} name={card.attributes.Name} path="/" />
+    <div className="flex flex-wrap lg:mx-5 justify-center gap-8 pt-10">
+      <div className="flex gap-3 2xl:gap-8">
+        {data?.slice(0, 6).map((card) => (
+          <ArrowLink
+            key={card.id}
+            name={card.attributes.Name.toString()}
+            path="/"
+          />
         ))}
       </div>
 
-      <div className="flex gap-8">
+      <div className="flex gap-3 2xl:gap-8">
         <div className="flex-grow" />
-        {data?.data.slice(6, 10).map((card) => (
-          <ArrowLink key={card.id} name={card.attributes.Name} path="/" />
+        {data?.slice(6, 10).map((card) => (
+          <ArrowLink
+            key={card.id}
+            name={card.attributes.Name.toString()}
+            path="/"
+          />
         ))}
         <div className="flex-grow" />
       </div>

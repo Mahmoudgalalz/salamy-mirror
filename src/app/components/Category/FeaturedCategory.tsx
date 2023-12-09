@@ -1,6 +1,6 @@
 import ArrowLink from "@/app/components/arrow-link";
 import { Divider } from "@nextui-org/react";
-import MiniFeaturedArticle from "./MiniFeaturedArticle";
+import MiniFeaturedArticle from "../Article/MiniFeaturedArticle";
 
 const FeaturedCategorie = () => {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import FeaturedCategorie from "./ui/FeaturedCategorie";
-import MiniFeaturedArticle from "./ui/MiniFeaturedArticle";
+import FeaturedCategorie from "../Category/FeaturedCategory";
+import MiniFeaturedArticle from "./MiniFeaturedArticle";
 import { fetchMainCategories } from "@/app/lib/api/main-category";
 import clsx from "clsx";
 

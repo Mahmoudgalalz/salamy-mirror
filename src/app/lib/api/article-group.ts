@@ -1,9 +1,9 @@
 import { instance } from "../instance";
 
-export const showCase = async (type?: PathOptions): Promise<ArticleGroups> => {
-  const res = await instance.get(`/article-groups?populate=*`);
+export const showCase = async (type?: PathOptions): Promise<showCase> => {
+  const res = await instance.get(`/article-groups?fields[0]=name&fields[1]=id`);
 
-  let data: ArticleGroups = res.data;
+  let data = res.data;
 
   return data;
 };

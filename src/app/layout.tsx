@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Header from "./components/Header";
 import Footer from "./components/footer";
-import Home from "./dashboard/page";
+import Home from "./page";
 
 const Readex = Readex_Pro({
   subsets: ["arabic"],

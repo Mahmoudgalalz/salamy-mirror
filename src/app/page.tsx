@@ -1,8 +1,8 @@
 "use client";
 import { Button, Image, Input } from "@nextui-org/react";
 import NextImage from "next/image";
-import ArticleShowCase from "../components/Article/article-showcase";
-import { FeaturedArticles } from "./components/FeaturedArticles";
+import ArticleShowCase from "./components/Article/article-showcase";
+import { FeaturedArticles } from "./components/Article/FeaturedArticles";
 
 const cardInfo = [
   {

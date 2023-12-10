@@ -1,30 +1,42 @@
+import Link from "next/link";
+
 const MiniFeaturedArticle = ({
   image,
   category,
   title,
   description,
+  articleGroupSlug,
+  articleSlug,
 }: {
-  image?: string;
+  image: Cover;
   category?: string;
   title?: string;
   description?: string;
+  articleGroupSlug?: string;
+  articleSlug?: string;
 }) => {
+  console.log(image);
   return (
-    <div className="flex gap-5 mb-10">
-      {image && <img src={image} alt="article" className="w-1/4" />}
-      <div className="flex flex-col gap-3 py-2">
-        <span className="flex flex-col gap-2">
-          <h5 className="text-content1 text-xs">التصنيف</h5>
-          <h3 className="text-2xl text-[#232426] font-normal">
-            هنا يتم استدعاء اسم المقالة
-          </h3>
-        </span>
-        <p className="text-[#656667] leading-loose text-sm">
-          هنا يتم استدعاء مختصر عن المقالة او المحتوي الاول للمقالة هنا يتم
-          استدعاء مختصر عن المقالة او المحتوي الاول للمقالة....
-        </p>
+    <Link href={`/articleGroup/${articleGroupSlug}/article/${articleSlug}`}>
+      <div className="flex gap-5 mb-10 h-48 py-5">
+        {image && (
+          <img
+            src={`http://128.199.48.214:1337${image.data.attributes.formats.thumbnail.url}`}
+            alt="article"
+            className="w-1/4 h-full bg-contain"
+          />
+        )}
+        <div className="flex flex-col gap-3 py-2">
+          <span className="flex flex-col gap-2">
+            <h5 className="text-content1 text-xs">{category}</h5>
+            <h3 className="text-2xl text-[#232426] font-normal">{title} </h3>
+          </span>
+          <p className="text-[#656667] leading-loose text-sm text-ellipsis line-clamp-1">
+            {description}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

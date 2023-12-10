@@ -1,8 +1,7 @@
 "use client";
 import { Button, Image, Input } from "@nextui-org/react";
 import NextImage from "next/image";
-import ArticleShowCase from "./components/Article/article-showcase";
-import { FeaturedArticles } from "./components/Article/FeaturedArticles";
+import Featured from "./components/Featured";
 
 const cardInfo = [
   {
@@ -63,14 +62,7 @@ export default function Home() {
           return Card(card);
         })}
       </section>
-      <div className="flex flex-col items-center gap-10 py-36 bg-[#FFEEDD] justify-center">
-        <h1 className="text-5xl font-bold text-[##333D42] text-center w-[56rem] leading-relaxed">
-          نساعدك في علاج مشكلتك النفسية والوصول إلى السلام النفسي
-        </h1>
-        <p className="text-3xl font-light">اختر موضوعاً ترغب في استكشافه</p>
-        <ArticleShowCase />
-      </div>
-      <FeaturedArticles />
+      <Featured />
       <div className="flex flex-col items-center gap-10 py-36 bg-[#F05B5B] justify-center">
         <h1 className="text-5xl font-bold text-white text-center w-[56rem] leading-relaxed">
           اشترك في نشرتنا البريدية

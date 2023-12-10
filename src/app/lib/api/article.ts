@@ -1,11 +1,13 @@
 import { instance } from "../instance";
 
-export const fetchArticleGroup = async (articleGroupId: number) => {
+export const fetchArticleGroup = async (
+  articleGroupSlug: string
+): Promise<ArticleGroup> => {
   const res = await instance.get(
-    `/article-groups/${articleGroupId}?populate=*`
+    `article-groups?filters[slug][$eq]=${articleGroupSlug}&populate=*`
   );
 
-  let data = res.data;
+  let data: ArticleGroup = res.data;
 
   return data;
 };

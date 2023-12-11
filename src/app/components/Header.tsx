@@ -1,6 +1,8 @@
 "use client";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Button, Input } from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
 
 const social = [
   {
@@ -91,7 +93,15 @@ export default function Header() {
         </div>
       </div>
       <div className="mt-6 mx-20 flex items-center gap-10 justify-between">
-        <img className="w-[18rem]" src="logo-black.png" alt="Logo" />
+        <Link href={"/"}>
+          <Image
+            className="w-[18rem]"
+            src="/logo-black.png"
+            alt="Logo"
+            width={150}
+            height={150}
+          />
+        </Link>
         <div className="flex w-full ml-28 relative">
           <Button
             radius="sm"

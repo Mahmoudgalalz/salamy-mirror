@@ -1,6 +1,8 @@
 "use client";
 import { Button, Divider, Input } from "@nextui-org/react";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 const BrandriaBrand = (
   <svg
@@ -196,11 +198,15 @@ export default function Footer(): JSX.Element {
     <footer className="static bottom-0 bg-[#333D42] py-10 pt-28 px-20">
       <div className="flex justify-around">
         <div className="flex flex-col gap-10">
-          <img
-            className="w-[20rem]"
-            src="logo-white.png"
-            alt="Salamy's Logo white"
-          />
+          <Link href={"/"}>
+            <Image
+              className="w-[18rem]"
+              src="/logo-white.png"
+              alt="Logo"
+              width={150}
+              height={150}
+            />
+          </Link>
           <div className="flex flex-col text-default gap-3">
             <h3 className="text-default font-normal text-3xl">
               منصة سلامي النفسية

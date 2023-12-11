@@ -1,10 +1,14 @@
 "use client";
 
 import ActionBtn from "@/app/components/ActionBtn";
+import MiniFeaturedArticle from "@/app/components/Article/MiniFeaturedArticle";
 import { fetchArticleGroup } from "@/app/lib/api/article";
-import { useEffect } from "react";
+import { displayArticleAndSuggest, formatDateToArabic } from "@/app/lib/utils";
+import { Divider } from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
-let socialMediaIcons = [
+const socialMediaIcons = [
   {
     name: "linkedin",
     icon: (
@@ -105,6 +109,14 @@ let socialMediaIcons = [
   },
 ];
 
+type CurrArticle = {
+  articleGroup: string;
+  images: Cover;
+  main_category: MainCategory;
+  id?: number | undefined;
+  attributes?: ArticleAttributes | undefined;
+};
+
 export default function Page({
   params,
 }: {
@@ -113,32 +125,52 @@ export default function Page({
     articleSlug: string;
   };
 }) {
+  const [article, setArticle] = useState<CurrArticle>();
+  const [suggested, setSuggested] = useState<ArticleData[]>();
+
   useEffect(() => {
     async function fetchData() {
-      const res = await fetchArticleGroup(params.groupSlug);
+      await fetchArticleGroup(params.groupSlug).then((res) => {
+        const { currArticle, suggestedArticles } = displayArticleAndSuggest(
+          res,
+          params.articleSlug
+        );
+
+        setArticle(currArticle);
+        setSuggested(suggestedArticles);
+        console.log(article?.attributes?.Content);
+      });
     }
-  }, [params.groupSlug]);
+    fetchData();
+  }, []);
   return (
     <article>
       <header className="flex  bg-[#FFE0D0]">
-        <img src="/article.png" alt="Article" />
+        <Image
+          src={`http://128.199.48.214:1337${
+            article?.images.data.attributes.formats.thumbnail.url ??
+            "/article.png"
+          }`}
+          alt={article?.images.data.attributes.alternativeText}
+          className="w-7/12 bg-cover"
+          width={600}
+          height={600}
+        />
         <div className="flex flex-col gap-16 lg:pr-14 lg:pl-44 py-16 ">
-          <h3 className="text-lg 2xl:text-xl font-medium">
-            الرئيسية | التصنيف الاساسي | التصنيف الفرعي
+          <h3 className="text-lg 2xl:text-xl font-medium flex gap-2">
+            <span>الرئيسية | </span>
+            <span>{article?.main_category.data.attributes.Name} | </span>
+            <span>{article?.articleGroup}</span>
           </h3>
           <h1 className="text-4xl 2xl:text-5xl font-semibold">
-            تجريب صفحة المقالات من الداخل لمنصة سلامي
+            {article?.attributes?.Title}
           </h1>
           <p className="text-lg leading-loose">
-            تعد اللغة العربية إحدى أكثر اللغات شيوعًا في العالم، ولديها تاريخ
-            طويل وثقافة غنية. إنها اللغة الرسمية في العديد من البلدان العربية
-            وتُستخدم على نطاق واسع في الشرق الأوسط وشمال أفريقيا. تمتاز اللغة
-            العربية بخطوطها الجميلة والتصاميم الإبداعية التي يمكن تحقيقها
-            باستخدام مجموعة متنوعة من الخطوط.
+            {article?.attributes?.Description}
           </p>
-          <div className="flex justify-between items-center">
-            <span className="px-4 py-2 bg-secondary-foreground rounded-lg text-lg mr-16">
-              ١٧ مايو ٢٠٢٣
+          <div className="flex justify-between items-center  mr-16">
+            <span className="px-4 py-2 bg-secondary-foreground rounded-lg text-lg">
+              {formatDateToArabic(article?.attributes?.publishedAt)}
             </span>
             <span className="flex gap-4 ">
               {socialMediaIcons.map((card) => {
@@ -163,15 +195,68 @@ export default function Page({
         </div>
       </header>
       <div className="py-56 flex px-9">
-        <div className="flex flex-col">
+        <aside className="flex flex-col pl-10 ">
           <span className="flex flex-col gap-3">
             <p>بواسطة مصطفي جمال مراجعة محمد سلطان</p>
             <div className="h-[1px] bg-black mx-2"></div>
           </span>
-        </div>
-        <div></div>
-        <div></div>
+          <div className="flex justify-between mt-10">
+            <div className="flex flex-col gap-3">
+              {[1, 2, 3, 4, 5].map((index) => {
+                return (
+                  <span
+                    key={index}
+                    className="font-light transition delay-75 ease-out hover:bg-[#FED] p-3 cursor-pointer hover:font-semibold rounded-full"
+                  >
+                    عنوان محتوي المقالة لصفحة المواضيع
+                  </span>
+                );
+              })}
+            </div>
+            <Divider orientation="vertical" className="bg-divider w-0.5" />
+          </div>
+        </aside>
+        <div
+          className="flex-1 bg-inherit  text-red-950"
+          dangerouslySetInnerHTML={{
+            __html: removeBackgroundColors(article?.attributes?.Content) || "",
+          }}
+        ></div>
+        <aside className="flex gap-10 w-1/4  pr-5 ">
+          <Divider orientation="vertical" className="bg-divider w-0.5" />
+          <div className="flex flex-col w-fit">
+            <span className="flex flex-col gap-3">
+              <h6 className="text-sm">{article?.articleGroup}</h6>
+              <h4 className="text-2xl text-[#045346] font-bold">
+                مقالات ذات صلة
+              </h4>
+            </span>
+            {suggested?.map((article) => {
+              return (
+                <div key={article.id}>
+                  <MiniFeaturedArticle
+                    size="small"
+                    title={article.attributes.Title}
+                    description={article.attributes.Description}
+                    articleGroupSlug={params.groupSlug}
+                    articleSlug={article.attributes.slug}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </aside>
       </div>
     </article>
   );
+}
+
+function removeBackgroundColors(
+  content: string | undefined
+): string | undefined {
+  // Remove background colors from all elements
+  if (!content) return undefined;
+  const modifiedContent = content.replace(/background-color:[^;]+;/g, "");
+
+  return modifiedContent;
 }

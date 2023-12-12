@@ -1,6 +1,3 @@
-import parse from "html-react-parser";
-import DOMPurify from "dompurify";
-
 export function suggestArticleGroups(data: ShowCase | undefined): FeatGroups {
   if (!data) return [];
   const articleGroups = data.data
@@ -59,4 +56,13 @@ export function formatDateToArabic(inputString: string | undefined): string {
   const year = date.getFullYear();
 
   return `${day} ${month} ${year}`;
+}
+
+export function removeBackgroundColors(
+  content: string | undefined
+): string | undefined {
+  if (!content) return undefined;
+  const modifiedContent = content.replace(/background-color:[^;]+;/g, "");
+
+  return modifiedContent;
 }

@@ -3,7 +3,11 @@
 import ActionBtn from "@/app/components/ActionBtn";
 import MiniFeaturedArticle from "@/app/components/Article/MiniFeaturedArticle";
 import { fetchArticleGroup } from "@/app/lib/api/article";
-import { displayArticleAndSuggest, formatDateToArabic } from "@/app/lib/utils";
+import {
+  displayArticleAndSuggest,
+  formatDateToArabic,
+  removeBackgroundColors,
+} from "@/app/lib/utils";
 import { Divider } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -249,14 +253,4 @@ export default function Page({
       </div>
     </article>
   );
-}
-
-function removeBackgroundColors(
-  content: string | undefined
-): string | undefined {
-  // Remove background colors from all elements
-  if (!content) return undefined;
-  const modifiedContent = content.replace(/background-color:[^;]+;/g, "");
-
-  return modifiedContent;
 }

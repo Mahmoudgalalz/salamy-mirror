@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import FeaturedCategorie from "../Category/FeaturedCategory";
 import Image from "next/image";
-import { showCase } from "@/app/lib/api/article-group";
 import { fetchArticleGroup } from "@/app/lib/api/article";
 import MiniFeaturedArticle from "./MiniFeaturedArticle";
+import Link from "next/link";
 
 type Article = {
   articleGroupTitle: string;
@@ -27,9 +27,10 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
             const articleGroupData = await fetchArticleGroup(
               articleGroup.attributes.slug
             );
+
             const articles = articleGroupData.data[0].attributes.articles.data;
 
-            return articles
+            const updatedArticles = articles
               .map((article) => ({
                 ...article,
                 content: article.attributes.Content,
@@ -39,33 +40,40 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
                 mainCategory: articleGroup.attributes.main_category,
               }))
               .sort(() => Math.random() - 0.5);
+
+            setFeatArticles((prev) => {
+              return [...(prev ?? []), ...updatedArticles];
+            });
           });
 
           const featuredArticles = (await Promise.all(promises)).flat();
-
+          setLoading(false);
           return featuredArticles;
         }
       } catch (error) {
-        console.log("Error fetching data:", error);
+        console.error(error);
+        setLoading(false);
       }
     }
-    fetchFeatArticles().then((featuredArticles) => {
-      setFeatArticles(featuredArticles);
-      setLoading(false);
-    });
+
+    fetchFeatArticles();
   }, [data]);
 
   return (
     <div className="flex flex-col items-start gap-7 py-36 bg-[#F8F7FF] justify-center mx-10">
       <h4 className="text-black/50 text-xl">المقالات المميزة</h4>
       <h2 className="text-5xl font-bold">مقتطفات من مقالاتنا المميزة</h2>
-      <div className="w-full rounded-2xl flex my-14">
+
+      <Link
+        className="w-full h-1/2 rounded-2xl flex my-14"
+        href={`/articleGroup/${featArticles?.[0].articleGroupSlug}/article/${featArticles?.[0].attributes.slug}`}
+      >
         {featArticles && (
           <Image
             src={`http://128.199.48.214:1337${featArticles?.[0].image.data.attributes.formats.thumbnail.url}`}
             loading="lazy"
             alt="article"
-            className="w-1/2 h-full bg-clip-border rounded-s-xl"
+            className="w-1/2 h-1/2 bg-clip-border rounded-s-xl"
             width={600}
             height={600}
           />
@@ -83,11 +91,11 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
             {featArticles?.[0].attributes.Description}
           </p>
         </div>
-      </div>
+      </Link>
+
       <div className="grid grid-cols-2 gap-5 mb-8">
         {!loading &&
-          featArticles?.slice(1, 5).map((article) => {
-            console.log(article);
+          featArticles?.slice(7, 11).map((article) => {
             return (
               <MiniFeaturedArticle
                 key={article.id}

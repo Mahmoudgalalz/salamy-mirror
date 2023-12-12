@@ -12,7 +12,6 @@ export default function Featured() {
     async function fetchShowCase() {
       try {
         const res = await showCase();
-        console.log(res);
         if (res) setData(res);
       } catch (error) {
         console.log("Error fetching data:", error);

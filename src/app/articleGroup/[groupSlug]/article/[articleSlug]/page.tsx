@@ -1,16 +1,16 @@
 "use client";
-
-import ActionBtn from "@/app/components/ActionBtn";
 import MiniFeaturedArticle from "@/app/components/Article/MiniFeaturedArticle";
 import { fetchArticleGroup } from "@/app/lib/api/article";
 import {
   displayArticleAndSuggest,
   formatDateToArabic,
-  removeBackgroundColors,
+  modifyHtml,
 } from "@/app/lib/utils";
 import { Divider } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import ArticleActions from "@/app/components/Article/ArticleActions";
+import { ArticleFooter } from "@/app/components/Article/ArticleFooter";
 
 const socialMediaIcons = [
   {
@@ -141,8 +141,8 @@ export default function Page({
         );
 
         setArticle(currArticle);
+        console.log(currArticle);
         setSuggested(suggestedArticles);
-        console.log(article?.attributes?.Content);
       });
     }
     fetchData();
@@ -190,12 +190,7 @@ export default function Page({
               })}
             </span>
           </div>
-          <div className="mr-16 flex gap-5 justify-between">
-            <ActionBtn title="تحميل كملف PDF" icon="download" />
-            <ActionBtn title="طباعة" icon="print" />
-            <ActionBtn title="مشاركة" icon="share" />
-            <ActionBtn title="نسخ الرابط" icon="copy" />
-          </div>
+          <ArticleActions />
         </div>
       </header>
       <div className="py-56 flex px-9">
@@ -220,12 +215,21 @@ export default function Page({
             <Divider orientation="vertical" className="bg-divider w-0.5" />
           </div>
         </aside>
-        <div
-          className="flex-1 bg-inherit  text-red-950"
-          dangerouslySetInnerHTML={{
-            __html: removeBackgroundColors(article?.attributes?.Content) || "",
-          }}
-        ></div>
+        <div className="flex-1 px-5">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: modifyHtml(article?.attributes?.Content) || "",
+            }}
+          ></div>
+          <div className="flex flex-col gap-5">
+            <h4 className="text-2xl text-[#045346] font-semibold mt-20">
+              المزيد حول المقالة
+            </h4>
+            <ArticleFooter
+              references={modifyHtml(article?.attributes?.References)}
+            />
+          </div>
+        </div>
         <aside className="flex gap-10 w-1/4  pr-5 ">
           <Divider orientation="vertical" className="bg-divider w-0.5" />
           <div className="flex flex-col w-fit">

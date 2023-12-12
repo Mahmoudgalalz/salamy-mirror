@@ -1,3 +1,5 @@
+import * as cheerio from "cheerio";
+
 export function suggestArticleGroups(data: ShowCase | undefined): FeatGroups {
   if (!data) return [];
   const articleGroups = data.data
@@ -58,11 +60,26 @@ export function formatDateToArabic(inputString: string | undefined): string {
   return `${day} ${month} ${year}`;
 }
 
-export function removeBackgroundColors(
-  content: string | undefined
-): string | undefined {
-  if (!content) return undefined;
-  const modifiedContent = content.replace(/background-color:[^;]+;/g, "");
+export function modifyHtml(htmlString: string | undefined): string {
+  if (!htmlString) return "";
 
-  return modifiedContent;
+  htmlString = htmlString.replace(/background-color:[^;]+;/g, "");
+
+  const $ = cheerio.load(htmlString);
+
+  $("span[style]").each((index: any, element: any) => {
+    const $span = $(element);
+
+    const styleAttribute = $span.attr("style") || "";
+
+    $span.attr(
+      "style",
+      styleAttribute.replace(
+        /font-family:[^;]*/i,
+        `font-family: '__Readex_Pro_48f1ec', '__Readex_Pro_Fallback_48f1ec'`
+      )
+    );
+  });
+
+  return $.html();
 }

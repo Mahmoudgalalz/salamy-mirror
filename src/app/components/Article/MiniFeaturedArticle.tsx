@@ -17,7 +17,6 @@ const MiniFeaturedArticle = ({
   articleSlug?: string;
   size?: "default" | "small";
 }) => {
-  console.log(image);
   return (
     <Link href={`/articleGroup/${articleGroupSlug}/article/${articleSlug}`}>
       <div className="flex gap-5  h-full py-5">

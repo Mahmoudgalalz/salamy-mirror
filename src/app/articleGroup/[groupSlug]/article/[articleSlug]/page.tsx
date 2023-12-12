@@ -159,14 +159,20 @@ export default function Page({
           className="w-7/12 bg-cover"
           width={600}
           height={600}
+          quality={100}
         />
-        <div className="flex flex-col gap-16 lg:pr-14 lg:pl-44 py-16 ">
+        <div className="flex flex-col gap-14 lg:pr-14 lg:pl-44 py-14 h-full">
           <h3 className="text-lg 2xl:text-xl font-medium flex gap-2">
             <span>الرئيسية | </span>
             <span>{article?.main_category.data.attributes.Name} | </span>
             <span>{article?.articleGroup}</span>
           </h3>
-          <h1 className="text-4xl 2xl:text-5xl font-semibold">
+          <h1
+            className="text-4xl 2xl:text-5xl font-semibold"
+            style={{
+              lineHeight: "4.3rem",
+            }}
+          >
             {article?.attributes?.Title}
           </h1>
           <p className="text-lg leading-loose">
@@ -190,11 +196,14 @@ export default function Page({
               })}
             </span>
           </div>
-          <ArticleActions />
+          <div className="flex">
+            <div className="flex-1"></div>
+            <ArticleActions />
+          </div>
         </div>
       </header>
       <div className="py-56 flex px-9">
-        <aside className="flex flex-col pl-10 ">
+        <aside className="flex flex-col pl-10 sticky top-5 h-full">
           <span className="flex flex-col gap-3">
             <p>بواسطة مصطفي جمال مراجعة محمد سلطان</p>
             <div className="h-[1px] bg-black mx-2"></div>
@@ -212,7 +221,10 @@ export default function Page({
                 );
               })}
             </div>
-            <Divider orientation="vertical" className="bg-divider w-0.5" />
+            <Divider
+              orientation="vertical"
+              className="bg-divider w-0.5 h-11/12"
+            />
           </div>
         </aside>
         <div className="flex-1 px-5">
@@ -230,8 +242,11 @@ export default function Page({
             />
           </div>
         </div>
-        <aside className="flex gap-10 w-1/4  pr-5 ">
-          <Divider orientation="vertical" className="bg-divider w-0.5" />
+        <aside className="flex gap-10 w-1/4 h-full  pr-5 sticky top-5">
+          <Divider
+            orientation="vertical"
+            className="bg-divider w-0.5 h-11/12"
+          />
           <div className="flex flex-col w-fit">
             <span className="flex flex-col gap-3">
               <h6 className="text-sm">{article?.articleGroup}</h6>

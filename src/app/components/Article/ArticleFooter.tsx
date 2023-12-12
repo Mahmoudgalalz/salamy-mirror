@@ -33,7 +33,10 @@ export function ArticleFooter({
         </AccordionItem>
       </Accordion>
       <Divider className="h-[0.1em] mb-3 -mt-3" />
-      <ArticleActions />
+      <div className="flex">
+        <div className="flex-1"></div>
+        <ArticleActions />
+      </div>
     </>
   );
 }

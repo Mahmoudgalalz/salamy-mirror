@@ -60,12 +60,12 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
   }, [data]);
 
   return (
-    <div className="flex flex-col items-start gap-7 py-36 bg-[#F8F7FF] justify-center mx-10">
+    <div className="flex flex-col items-start gap-7 py-36 bg-[#F8F7FF] justify-center mx-52 h-full">
       <h4 className="text-black/50 text-xl">المقالات المميزة</h4>
       <h2 className="text-5xl font-bold">مقتطفات من مقالاتنا المميزة</h2>
 
       <Link
-        className="w-full h-1/2 rounded-2xl flex my-14"
+        className="w-full rounded-2xl flex my-14 h-[28rem]"
         href={`/articleGroup/${featArticles?.[0].articleGroupSlug}/article/${featArticles?.[0].attributes.slug}`}
       >
         {featArticles && (
@@ -73,9 +73,10 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
             src={`http://128.199.48.214:1337${featArticles?.[0].image.data.attributes.formats.thumbnail.url}`}
             loading="lazy"
             alt="article"
-            className="w-1/2 h-1/2 bg-clip-border rounded-s-xl"
+            className="w-1/2 h-full bg-clip-border rounded-s-xl bg-cover"
             width={600}
-            height={600}
+            height={300}
+            quality={100}
           />
         )}
         <div className="bg-[#FCD961] flex flex-col gap-7 w-1/2 rounded-e-xl justify-center px-10">

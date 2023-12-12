@@ -38,7 +38,7 @@ export default function Home() {
           <h1 className="text-6xl w-[54rem] leading-relaxed font-semibold">
             منصة سلامي دليلك المتكامل نحو صحة نفسية أفضل
           </h1>
-          <p className="text-3xl w-[54rem] font-light">
+          <p className="text-3xl w-[54rem] font-light leading-relaxed">
             رحلتك نحو السلام النفسي تبدأ من هنا. احصل على الدعم النفسي الذي
             تحتاجه الآن علي منصة سلامي للصحة النفسية، تصفح جميع المقالات واعرف
             اكثر عن كيفية تنظيم حياتك وعلاقات مع الاشخاص المحيطة بشكل علمي، نحن

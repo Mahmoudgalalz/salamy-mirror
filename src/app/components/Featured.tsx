@@ -30,6 +30,7 @@ export default function Featured() {
         <p className="text-3xl font-light">اختر موضوعاً ترغب في استكشافه</p>
         <ArticleShowCase data={data} />
       </div>
+
       <FeaturedArticles data={data} />
     </>
   );

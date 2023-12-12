@@ -23,7 +23,11 @@ export default function ArticleShowCase({
       <div className="flex gap-3 2xl:gap-8">
         <div className="flex-grow" />
         {suggested?.slice(6, 10).map((card) => (
-          <ArrowLink key={card.id} name={card.name} path="/" />
+          <ArrowLink
+            key={card.id}
+            name={card.name}
+            path={`/articleGroup/${card.id}`}
+          />
         ))}
         <div className="flex-grow" />
       </div>

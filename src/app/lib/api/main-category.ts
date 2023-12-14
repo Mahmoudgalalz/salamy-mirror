@@ -1,9 +1,11 @@
 import { instance } from "../instance";
 
-export const fetchMainCategories = async (
-  type?: PathOptions
+export const fetchMainCategory = async (
+  mainCategorySlug: string
 ): Promise<MainCategory> => {
-  const res = await instance.get(`/main-categories?populate=*`);
+  const res = await instance.get(
+    `main-categories?populate=*&filters[slug][$eq]=${mainCategorySlug}`
+  );
 
   let data: MainCategory = res.data;
 

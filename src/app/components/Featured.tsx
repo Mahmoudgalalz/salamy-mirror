@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { FeaturedArticles } from "./Article/FeaturedArticles";
 import ArticleShowCase from "./Article/article-showcase";

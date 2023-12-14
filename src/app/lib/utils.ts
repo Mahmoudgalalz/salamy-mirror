@@ -67,7 +67,7 @@ export function modifyHtml(htmlString: string | undefined): string {
 
   const $ = cheerio.load(htmlString);
 
-  $("span[style]").each((index: any, element: any) => {
+  $("span[style]").each((index, element) => {
     const $span = $(element);
 
     const styleAttribute = $span.attr("style") || "";
@@ -83,3 +83,43 @@ export function modifyHtml(htmlString: string | undefined): string {
 
   return $.html();
 }
+
+export function shuffleArray<T>(array: T[]): T[] {
+  const shuffledArray = [...array];
+  let currentIndex = shuffledArray.length,
+    randomIndex,
+    temporaryValue;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    temporaryValue = shuffledArray[currentIndex];
+    shuffledArray[currentIndex] = shuffledArray[randomIndex];
+    shuffledArray[randomIndex] = temporaryValue;
+  }
+
+  return shuffledArray;
+}
+
+// export function getCategorizedArticles(
+//   articles: Article[] | undefined
+// ): CategorizedArticles {
+//   if (!articles) return {};
+//   const categorizedArticles: CategorizedArticles = {};
+
+//   articles.forEach((article) => {
+//     const mainCategory = article.mainCategory.data.attributes.Name;
+
+//     if (categorizedArticles[mainCategory]) {
+//       categorizedArticles[mainCategory].push(article);
+//     } else {
+//       categorizedArticles[mainCategory] = [article];
+//     }
+//   });
+
+//   return categorizedArticles;
+// }

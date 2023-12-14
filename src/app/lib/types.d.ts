@@ -13,11 +13,42 @@ type ShowCase = {
   meta: Meta;
 };
 
+type Article = {
+  articleGroupTitle: string;
+  articleGroupSlug: string;
+  image: Cover;
+  mainCategory: {
+    data: MainCategoryData;
+  };
+  id: number;
+  attributes: ArticleAttributes;
+};
+
+type CategorizedArticles = {
+  [key: string]: Article[];
+};
+
 type FeatGroups = {
   id: number;
   name: string;
   slug: string;
 }[];
+
+type CurrArticle = {
+  articleGroup: string;
+  images: Cover;
+  main_category: {
+    data: MainCategoryData;
+  };
+  id?: number | undefined;
+  attributes?: ArticleAttributes | undefined;
+};
+
+type suggestedArticle = {
+  image: Cover;
+  groupSlug: string;
+  article: ArticleAttributes;
+};
 
 type ArticleGroup = {
   data: ArticleGroupData[];
@@ -39,7 +70,9 @@ type Attributes = {
   articles: Articles;
   category: Category;
   Cover: Cover;
-  main_category: MainCategory;
+  main_category: {
+    data: MainCategoryData;
+  };
 };
 
 type Articles = {
@@ -115,7 +148,7 @@ type ImageAttributes = {
 };
 
 type MainCategory = {
-  data: MainCategoryData;
+  data: MainCategoryData[];
 };
 
 type MainCategoryData = {
@@ -125,6 +158,10 @@ type MainCategoryData = {
 
 type MainCategoryAttributes = {
   Name: string;
+  article_groups: {
+    data: ArticleGroupData[];
+  };
+
   Customization: any;
   slug: string;
   Description: string;

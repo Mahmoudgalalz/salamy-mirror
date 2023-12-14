@@ -1,54 +1,42 @@
 "use client";
 import { useEffect, useState } from "react";
-import FeaturedCategorie from "../Category/FeaturedCategory";
 import Image from "next/image";
 import { fetchArticleGroup } from "@/app/lib/api/article";
 import MiniFeaturedArticle from "./MiniFeaturedArticle";
 import Link from "next/link";
 
-type Article = {
-  articleGroupTitle: string;
-  articleGroupSlug: string;
-  image: Cover;
-  mainCategory: MainCategory;
-  id: number;
-  attributes: ArticleAttributes;
-};
-
 export function FeaturedArticles({ data }: { data?: ShowCase }) {
   const [featArticles, setFeatArticles] = useState<Article[]>();
   const [loading, setLoading] = useState<boolean>(true);
+  // const [featCategories, setFeatCategories] = useState<CategorizedArticles>();
 
   useEffect(() => {
     async function fetchFeatArticles() {
       try {
         if (data) {
+          // TODO:Fetch featured-articles endpoint instead
           const promises = data.data.map(async (articleGroup) => {
             const articleGroupData = await fetchArticleGroup(
               articleGroup.attributes.slug
             );
-
             const articles = articleGroupData.data[0].attributes.articles.data;
 
-            const updatedArticles = articles
-              .map((article) => ({
-                ...article,
-                content: article.attributes.Content,
-                articleGroupTitle: articleGroup.attributes.Name,
-                articleGroupSlug: articleGroup.attributes.slug,
-                image: articleGroup.attributes.Cover,
-                mainCategory: articleGroup.attributes.main_category,
-              }))
-              .sort(() => Math.random() - 0.5);
+            const updatedArticles = articles.map((article) => ({
+              articleGroupTitle: articleGroup.attributes.Name,
+              articleGroupSlug: articleGroup.attributes.slug,
+              image: articleGroup.attributes.Cover,
+              attributes: article.attributes,
+              id: article.id,
+              mainCategory: {
+                data: articleGroup.attributes.main_category.data[0],
+              },
+            }));
 
             setFeatArticles((prev) => {
               return [...(prev ?? []), ...updatedArticles];
             });
           });
-
-          const featuredArticles = (await Promise.all(promises)).flat();
-          setLoading(false);
-          return featuredArticles;
+          await Promise.all(promises);
         }
       } catch (error) {
         console.error(error);
@@ -58,6 +46,18 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
 
     fetchFeatArticles();
   }, [data]);
+
+  // useEffect(() => {
+  //TODO: Categorize articles from the featured-articles endpoint
+  //   function setupFeatCategories() {
+  //     if (featArticles) {
+  //       const categories = getCategorizedArticles(featArticles);
+  //       setFeatCategories(categories);
+  //       console.log(categories);
+  //     }
+  //   }
+  //   setupFeatCategories();
+  // }, [featArticles]);
 
   return (
     <div className="flex flex-col items-start gap-7 py-36 bg-[#F8F7FF] justify-center mx-52 h-full">
@@ -96,7 +96,7 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
 
       <div className="grid grid-cols-2 gap-5 mb-8">
         {!loading &&
-          featArticles?.slice(7, 11).map((article) => {
+          featArticles?.slice(1, 5).map((article) => {
             return (
               <MiniFeaturedArticle
                 key={article.id}
@@ -111,9 +111,9 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
           })}
       </div>
       <div className="flex gap-10">
-        <FeaturedCategorie />
-        <FeaturedCategorie />
-        <FeaturedCategorie />
+        {
+          // Featured Categories goes here
+        }
       </div>
     </div>
   );

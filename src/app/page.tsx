@@ -24,7 +24,7 @@ const cardInfo = [
 export default function Home() {
   return (
     <>
-      <main className=" relative flex justify-between mt-10 items-center bg-[#FFE0D0]">
+      <main className=" relative flex justify-between items-center bg-[#FFE0D0]">
         <Image
           as={NextImage}
           src="/main-page.png"
@@ -59,7 +59,7 @@ export default function Home() {
       </div>
       <section className="flex justify-center py-48 bg-white">
         {cardInfo.map((card) => {
-          return Card(card);
+          return <Card key={card.header} {...card} />;
         })}
       </section>
       <Featured />
@@ -95,7 +95,6 @@ export default function Home() {
             اشترك
           </Button>
         </div>
-        {/* TODO list fetched from the API */}
       </div>
     </>
   );

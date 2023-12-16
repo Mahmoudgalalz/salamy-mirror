@@ -15,17 +15,19 @@ export function ArticleFooter({
         <AccordionItem
           key="1"
           aria-label="روابط مفيدة"
-          title={<h4 className="text-black text-xl"> روابط مفيدة</h4>}
+          title={
+            <h4 className="text-black text-xl 3xl:text-2xl"> روابط مفيدة</h4>
+          }
         >
           {defaultContent}
         </AccordionItem>
         <AccordionItem
           key="2"
           aria-label="روابط مفيدة"
-          title={<h4 className="text-black text-xl"> المراجع</h4>}
+          title={<h4 className="text-black text-xl 3xl:text-2xl"> المراجع</h4>}
         >
           <div
-            className="w-11/12 prose prose-md"
+            className="w-11/12 prose prose-md 3xl:[&__span]:text-lg&w-11/12"
             dangerouslySetInnerHTML={{
               __html: references || defaultContent,
             }}

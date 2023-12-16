@@ -30,12 +30,20 @@ const MiniFeaturedArticle = ({
             height={300}
           />
         )}
-        <div className="flex flex-col gap-3 py-2" role="محتوي المقالة">
-          <span className="flex flex-col gap-2" role="تصنيف و عنوان المقالة">
-            <h5 className="text-content1 text-xs">{category}</h5>
+        <div
+          className="flex flex-col gap-3 py-2 3xl:gap-4"
+          role="محتوي المقالة"
+        >
+          <span
+            className="flex flex-col gap-2 3xl:gap-4"
+            role="تصنيف و عنوان المقالة"
+          >
+            <h5 className="text-content1 text-xs 3xl:text-xl">{category}</h5>
             <h3
               className={`${
-                size === "small" ? "text-base" : "text-2xl"
+                size === "small"
+                  ? "text-base 3xl:text-xl"
+                  : "text-2xl 3xl:text-3xl"
               } text-[#232426] font-normal`}
             >
               {title}
@@ -43,7 +51,7 @@ const MiniFeaturedArticle = ({
           </span>
           <p
             className={`text-[#656667] leading-loose ${
-              size === "small" ? "text-xs" : "text-sm"
+              size === "small" ? "text-xs 3xl:text-base" : "text-sm 3xl:text-lg"
             } text-ellipsis line-clamp-1`}
           >
             {description}

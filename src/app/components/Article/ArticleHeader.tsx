@@ -1,5 +1,6 @@
 import { formatDateToArabic } from "@/app/lib/utils";
-import Image from "next/image";
+import { Image } from "@nextui-org/react";
+import NextImage from "next/image";
 import ArticleActions from "./ArticleActions";
 
 const socialMediaIcons = [
@@ -119,34 +120,43 @@ export default function ArticleHeader({
   publishedAt: string | undefined;
 }) {
   return (
-    <header className="flex  bg-[#FFE0D0]">
-      <Image
-        src={`http://128.199.48.214:1337${
-          image?.data.attributes.formats.thumbnail.url ?? "/article.png"
-        }`}
-        alt={image?.data.attributes.alternativeText}
-        className="w-7/12 bg-cover"
-        width={600}
-        height={600}
-        quality={100}
-      />
-      <div className="flex flex-col gap-14 lg:pr-14 lg:pl-44 py-14 h-full">
-        <h3 className="text-lg 2xl:text-xl font-medium flex gap-2">
-          <span>الرئيسية | </span>
-          <span>{main_category} | </span>
-          <span>{articleGroup}</span>
+    <header className="flex bg-[#FFE0D0] items-center relative">
+      <div className="w-1/2 h-full">
+        <img
+          src={`http://128.199.48.214:1337${
+            image?.data.attributes.formats.thumbnail.url ?? ""
+          }`}
+          alt={image?.data.attributes.alternativeText}
+          className="h-full"
+          style={{
+            objectFit: "cover",
+            height: "100%",
+            width: "100%",
+          }}
+        />
+      </div>
+      <section className="flex flex-col gap-14 lg:pr-14 lg:pl-44 py-14 h-full 3xl:pr-16 3xl:pl-40">
+        <h3 className="text-lg 2xl:text-xl font-medium flex gap-2 3xl:text-2xl">
+          {`الرئيسية  |  ${main_category}  |  ${articleGroup}`}
         </h3>
         <h1
-          className="text-4xl 2xl:text-5xl font-semibold"
+          className="text-4xl 2xl:text-5xl font-semibold 3xl:text-5xl"
           style={{
             lineHeight: "4.3rem",
           }}
         >
           {title}
         </h1>
-        <p className="text-lg leading-loose">{description}</p>
+        <p
+          className="text-lg  3xl:text-xl"
+          style={{
+            lineHeight: "2.5rem",
+          }}
+        >
+          {description}
+        </p>
         <div className="flex justify-between items-center  mr-16">
-          <span className="px-4 py-2 bg-secondary-foreground rounded-lg text-lg">
+          <span className="px-4 py-2 bg-secondary-foreground rounded-lg text-lg 3xl:text-xl">
             {formatDateToArabic(publishedAt)}
           </span>
           <span className="flex gap-4 ">
@@ -154,7 +164,7 @@ export default function ArticleHeader({
               return (
                 <span
                   key={card.name}
-                  className="cursor-pointer bg-secondary-foreground p-2 rounded-full"
+                  className="cursor-pointer bg-secondary-foreground p-2 rounded-full 3xl:p-3 [&__svg]:w-[25px] [&__svg]:h-[25px]"
                   onClick={card.onclick}
                 >
                   {card.icon}
@@ -167,7 +177,7 @@ export default function ArticleHeader({
           <div className="flex-1"></div>
           <ArticleActions />
         </div>
-      </div>
+      </section>
     </header>
   );
 }

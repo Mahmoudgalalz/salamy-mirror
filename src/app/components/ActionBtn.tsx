@@ -77,7 +77,7 @@ export default function ActionBtn({
 }) {
   return (
     <Link href={``} className="hover:text-black">
-      <div className="flex items-center gap-2 px-4 py-2 rounded-xl transition hover:ease-in-out duration-75 border-3 border-gray-700 hover:bg-[#FCD961] hover:border-[#FCD961] ">
+      <div className="flex items-center gap-2 px-4 py-2 rounded-xl transition hover:ease-in-out duration-75 border-3 border-gray-700 hover:bg-[#FCD961] hover:border-[#FCD961] 3xl:text-xl">
         {
           {
             download: downloadIcon,

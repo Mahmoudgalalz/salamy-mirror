@@ -9,7 +9,7 @@ export default function ArticleShowCase({
 }) {
   const suggested: FeatGroups = suggestArticleGroups(data);
   return (
-    <div className="flex flex-wrap lg:mx-5 justify-center gap-8 pt-10">
+    <div className="flex flex-wrap flex-col lg:mx-5 justify-center gap-8 pt-10">
       <div className="flex gap-3 2xl:gap-8">
         {suggested?.slice(0, 6).map((card) => (
           <ArrowLink

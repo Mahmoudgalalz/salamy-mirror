@@ -48,7 +48,7 @@ export default function ArrowLink({
     <Link href={path} className="hover:text-black">
       <div
         className={clsx(
-          "flex items-center px-4 py-2 rounded-xl transition hover:ease-in-out duration-75",
+          "flex items-center px-4 py-2 rounded-xl transition hover:ease-in-out duration-75 3xl:text-2xl ",
           variant === "default"
             ? "border-3 border-gray-700 hover:bg-[#FCD961] hover:border-[#FCD961] "
             : variant === "category"

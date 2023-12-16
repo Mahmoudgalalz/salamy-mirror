@@ -70,7 +70,7 @@ export default function Page({
   }, [article]);
 
   return (
-    <article role="article">
+    <article>
       <ArticleHeader
         image={article?.images}
         main_category={article?.main_category.data.attributes.Name}
@@ -82,7 +82,7 @@ export default function Page({
       <main className="py-56 flex px-9">
         <aside className="flex flex-col pl-10 sticky top-10 h-full w-1/4">
           <span className="flex flex-col gap-3">
-            <h2>بواسطة مصطفي جمال مراجعة محمد سلطان</h2>
+            <h2 className="3xl:text-xl">بواسطة مصطفي جمال مراجعة محمد سلطان</h2>
             <hr className="h-[1.5px] bg-black mx-2" />
           </span>
           <div className="flex justify-between mt-10">
@@ -103,7 +103,7 @@ export default function Page({
                         className={`font-light ${
                           item?.id === article?.id &&
                           "bg-[#FED] font-semibold p-5 leading-[2.5rem]"
-                        } cursor-pointer p-3 rounded-full`}
+                        } cursor-pointer p-3 rounded-full 3xl:text-xl`}
                       >
                         {item?.attributes?.Title}
                       </span>
@@ -125,7 +125,7 @@ export default function Page({
             }}
           ></div>
           <div className="flex flex-col gap-5">
-            <h2 className="text-2xl text-[#045346] font-semibold mt-20">
+            <h2 className="text-2xl text-[#045346] font-semibold mt-20 3xl:text-3xl">
               المزيد حول المقالة
             </h2>
             <ArticleFooter
@@ -133,17 +133,17 @@ export default function Page({
             />
           </div>
         </section>
-        <aside className="flex gap-10 w-1/4 h-full  pr-5 sticky top-10">
+        <aside className="flex gap-10 w-1/4 h-full pr-5 sticky top-10">
           <Divider
             orientation="vertical"
             className="bg-divider w-0.5 h-11/12"
           />
           <div className="flex flex-col w-fit">
             <span className="flex flex-col gap-3">
-              <h6 className="text-sm">
+              <h6 className="text-sm 3xl:text-lg">
                 {article?.main_category.data.attributes.Name}
               </h6>
-              <h2 className="text-2xl text-[#045346] font-bold">
+              <h2 className="text-2xl text-[#045346] font-bold 3xl:text-4xl">
                 مقالات ذات صلة
               </h2>
             </span>

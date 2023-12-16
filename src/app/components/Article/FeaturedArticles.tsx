@@ -61,11 +61,13 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
 
   return (
     <div className="flex flex-col items-start gap-7 py-36 bg-[#F8F7FF] justify-center mx-52 h-full">
-      <h4 className="text-black/50 text-xl">المقالات المميزة</h4>
-      <h2 className="text-5xl font-bold">مقتطفات من مقالاتنا المميزة</h2>
+      <h4 className="text-black/50 text-xl 3xl:text-2xl">المقالات المميزة</h4>
+      <h2 className="text-5xl font-bold 3xl:text-6xl">
+        مقتطفات من مقالاتنا المميزة
+      </h2>
 
       <Link
-        className="w-full rounded-2xl flex my-14 h-[28rem]"
+        className="w-full rounded-2xl flex my-14 h-[28rem] 3xl:h-[35rem]"
         href={`/articleGroup/${featArticles?.[0].articleGroupSlug}/article/${featArticles?.[0].attributes.slug}`}
       >
         {featArticles && (
@@ -80,21 +82,26 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
           />
         )}
         <div className="bg-[#FCD961] flex flex-col gap-7 w-1/2 rounded-e-xl justify-center px-10">
-          <span className="flex flex-col gap-2">
-            <h5 className="text-content1">
+          <span className="flex flex-col gap-2 3xl:gap-5">
+            <h5 className="text-content1 3xl:text-xl">
               {featArticles?.[0].articleGroupTitle}
             </h5>
-            <h2 className="text-3xl text-[#232426] font-medium">
+            <h2 className="text-3xl text-[#232426] font-medium 3xl:text-4xl">
               {featArticles?.[0].attributes.Title}
             </h2>
           </span>
-          <p className="text-[#656667] leading-loose">
+          <p
+            className="text-[#656667] 3xl:text-xl"
+            style={{
+              lineHeight: "2.5rem",
+            }}
+          >
             {featArticles?.[0].attributes.Description}
           </p>
         </div>
       </Link>
 
-      <div className="grid grid-cols-2 gap-5 mb-8">
+      <div className="grid grid-cols-2 gap-10 mb-8">
         {!loading &&
           featArticles?.slice(1, 5).map((article) => {
             return (

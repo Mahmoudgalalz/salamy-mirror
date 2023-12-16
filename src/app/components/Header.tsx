@@ -71,7 +71,7 @@ const dropdown = [
 
 export default function Header() {
   return (
-    <main className="w-full bg-background p-6">
+    <main className="w-full bg-background px-6 pt-6 pb-10">
       <div className="flex gap-10 justify-end ml-10 items-center">
         <div className="flex gap-12 text-content1-foreground">
           {upperData.map(({ href, name }) => {

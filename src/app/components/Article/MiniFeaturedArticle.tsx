@@ -38,7 +38,9 @@ const MiniFeaturedArticle = ({
             className="flex flex-col gap-2 3xl:gap-4"
             role="تصنيف و عنوان المقالة"
           >
-            <h5 className="text-content1 text-xs 3xl:text-xl">{category}</h5>
+            <span className="text-content1 text-xs 3xl:text-xl">
+              {category}
+            </span>
             <h3
               className={`${
                 size === "small"

@@ -16,7 +16,7 @@ export function ArticleFooter({
           key="1"
           aria-label="روابط مفيدة"
           title={
-            <h4 className="text-black text-xl 3xl:text-2xl"> روابط مفيدة</h4>
+            <span className="text-black text-xl 3xl:text-2xl">روابط مفيدة</span>
           }
         >
           {defaultContent}
@@ -24,7 +24,9 @@ export function ArticleFooter({
         <AccordionItem
           key="2"
           aria-label="روابط مفيدة"
-          title={<h4 className="text-black text-xl 3xl:text-2xl"> المراجع</h4>}
+          title={
+            <span className="text-black text-xl 3xl:text-2xl"> المراجع</span>
+          }
         >
           <div
             className="w-11/12 prose prose-md 3xl:[&__span]:text-lg&w-11/12"

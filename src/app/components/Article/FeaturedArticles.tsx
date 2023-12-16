@@ -61,7 +61,9 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
 
   return (
     <div className="flex flex-col items-start gap-7 py-36 bg-[#F8F7FF] justify-center mx-52 h-full">
-      <h4 className="text-black/50 text-xl 3xl:text-2xl">المقالات المميزة</h4>
+      <span className="text-black/50 text-xl 3xl:text-2xl">
+        المقالات المميزة
+      </span>
       <h2 className="text-5xl font-bold 3xl:text-6xl">
         مقتطفات من مقالاتنا المميزة
       </h2>
@@ -83,12 +85,12 @@ export function FeaturedArticles({ data }: { data?: ShowCase }) {
         )}
         <div className="bg-[#FCD961] flex flex-col gap-7 w-1/2 rounded-e-xl justify-center px-10">
           <span className="flex flex-col gap-2 3xl:gap-5">
-            <h5 className="text-content1 3xl:text-xl">
+            <span className="text-content1 3xl:text-xl">
               {featArticles?.[0].articleGroupTitle}
-            </h5>
-            <h2 className="text-3xl text-[#232426] font-medium 3xl:text-4xl">
+            </span>
+            <span className="text-3xl text-[#232426] font-medium 3xl:text-4xl">
               {featArticles?.[0].attributes.Title}
-            </h2>
+            </span>
           </span>
           <p
             className="text-[#656667] 3xl:text-xl"

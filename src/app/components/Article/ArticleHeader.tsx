@@ -121,24 +121,24 @@ export default function ArticleHeader({
 }) {
   return (
     <header className="flex bg-[#FFE0D0] items-center relative">
-      <div className="w-1/2 h-full">
-        <img
+      <div className="h-full">
+        <Image
+          as={NextImage}
           src={`http://128.199.48.214:1337${
             image?.data.attributes.formats.thumbnail.url ?? ""
           }`}
           alt={image?.data.attributes.alternativeText}
-          className="h-full"
-          style={{
-            objectFit: "cover",
-            height: "100%",
-            width: "100%",
-          }}
+          width={1000}
+          height={1000}
+          radius="none"
+          className="h-full bg-contain"
         />
       </div>
+
       <section className="flex flex-col gap-14 lg:pr-14 lg:pl-44 py-14 h-full 3xl:pr-16 3xl:pl-40">
-        <h3 className="text-lg 2xl:text-xl font-medium flex gap-2 3xl:text-2xl">
+        <span className="text-lg 2xl:text-xl font-medium flex gap-2 3xl:text-2xl">
           {`الرئيسية  |  ${main_category}  |  ${articleGroup}`}
-        </h3>
+        </span>
         <h1
           className="text-4xl 2xl:text-5xl font-semibold 3xl:text-5xl"
           style={{

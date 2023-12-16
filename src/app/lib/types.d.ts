@@ -180,3 +180,10 @@ type Pagination = {
   pageCount: number;
   total: number;
 };
+
+type ArticleProps = {
+  params: {
+    groupSlug: string;
+    articleSlug: string;
+  };
+};

@@ -1,13 +1,13 @@
-import { instance } from "../instance"
+import { instance } from "../instance";
 
-export const showCase = async (type?:PathOptions): Promise<any> =>{
-    let data;
-    //TODO: need to optimize the populate parm to get the exect data needed
-    const res = await instance.get(`/main-categories?populate=*`)
-    // res.data.map(data=>{
+export const fetchArticleGroup = async (
+  articleGroupSlug: string
+): Promise<ArticleGroup> => {
+  const res = await instance.get(
+    `article-groups?filters[slug][$eq]=${articleGroupSlug}&populate=*`
+  );
 
-    // })
-    const rootPath = res.data.slug;
-    const category = res.data.categories
-    return res
-}
+  let data: ArticleGroup = res.data;
+
+  return data;
+};
